@@ -1,3 +1,8 @@
+# IFPB - Sistemas para Internet
+# Disciplina: Segurança de Dados
+# Prof.: Leandro Cavalcanti
+# Aluno: Alessandro Rodrigues e Bruno Vinicius
+
 import math
 
 def algorythm_md5(message):
