@@ -12,7 +12,7 @@ def algorythm_md5(message):
     WORD_SIZE = 32 #define o tamanho da palavra
     MAX_SIZE = 448 #define o tamanho máximo
 
-    #inicializa as variáveis do MD5
+    # Inicializa as variáveis do MD5
     A, B, C, D = (
         0x67452301,
         0xefcdab89,
@@ -31,12 +31,13 @@ def algorythm_md5(message):
     # Calcular os valores de K
     K = [int(abs(math.sin(i + 1)) * 2**32) & 0xFFFFFFFF for i in range(64)]
 
-    # funções auxiliares
+    # Funções auxiliares para cada etapa do loop
     def F(x, y, z): return (x & y) | (~x & z)
     def G(x, y, z): return (x & z) | (y & ~z)
     def H(x, y, z): return x ^ y ^ z
     def I(x, y, z): return y ^ (x | ~z)
 
+    # Rotação a esquerda, para misturar os bits
     def leftrotate(x, c):
         return ((x << c) | (x >> (WORD_SIZE - c))) & 0xFFFFFFFF
 
@@ -72,6 +73,7 @@ def algorythm_md5(message):
                 f = I(b, c, d)
                 g = (7*i) % 16
 
+            # Atualizar os valores temporários
             temp = d
             d = c
             c = b
@@ -94,13 +96,13 @@ def algorythm_md5(message):
 
 
 # Teste
-print(algorythm_md5(""))
+print(algorythm_md5("Instituto Federal da Paraiba"))
 
 
 
 #Use o código abaixo para comparar os resultados.
 
 #import hashlib
-#texto = "teste1"
+#texto = "Instituto Federal da Paraiba"
 #hash_md5 = hashlib.md5(texto.encode()).hexdigest()
 #print("MD5:", hash_md5)
